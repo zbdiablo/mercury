@@ -9,7 +9,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/META-INF/spring/applicationContext.xml
+			classpath:/META-INF/spring/applicationContext.xml
 		</param-value>
 	</context-param>
 	

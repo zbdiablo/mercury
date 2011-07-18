@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 
 	<properties>
-		<springframework.version>3.1.0.M2</springframework.version>
+		<springframework.version>3.0.5.RELEASE</springframework.version>
 		<hibernate.version>3.6.5.Final</hibernate.version>
 		<org.cloudfoundry-version>0.6.0</org.cloudfoundry-version>
 		<jersey.version>1.6</jersey.version>
@@ -31,6 +31,12 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.6.1</version>
+			<scope>runtime</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -63,6 +69,12 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
+			<version>${springframework.version}</version>
+			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
 			<version>${springframework.version}</version>
 			<scope>runtime</scope>
 		</dependency>
