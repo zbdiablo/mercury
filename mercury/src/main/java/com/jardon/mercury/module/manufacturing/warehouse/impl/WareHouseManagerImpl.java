@@ -8,18 +8,22 @@ import org.springframework.stereotype.Service;
 
 import com.jardon.mercury.core.Goods;
 import com.jardon.mercury.core.unit.Amount;
-import com.jardon.mercury.module.manufacturing.warehouse.WareHouse;
 import com.jardon.mercury.module.manufacturing.warehouse.WareHouseManager;
 
+/**
+ * warehouse manager implementation
+ * 
+ * @since 1.0.0
+ * @author Don Li
+ * 
+ */
 @Service("wareHouseManager")
 public class WareHouseManagerImpl implements WareHouseManager {
     
-    private WareHouse wareHouse;
     private EntityManagerFactory emf;
     
     @Autowired
-    public WareHouseManagerImpl(WareHouse wareHouse, EntityManagerFactory emf) {
-        this.wareHouse = wareHouse;
+    public WareHouseManagerImpl(EntityManagerFactory emf) {
         this.emf = emf;
     }
     
@@ -27,7 +31,7 @@ public class WareHouseManagerImpl implements WareHouseManager {
     public void importGoods(Goods goods, Amount amount) {
         EntityManager em = emf.createEntityManager();
         try {
-            // query database to get the warehouse object and increase its amount
+            em.find(Goods.class, goods.getId()).getWareHouseImpl().increase(amount);
         } finally {
             em.close();
         }
@@ -35,20 +39,32 @@ public class WareHouseManagerImpl implements WareHouseManager {
     
     @Override
     public void exportGoods(Goods goods, Amount amount) {
-        // TODO Auto-generated method stub
-        
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.find(Goods.class, goods.getId()).getWareHouseImpl().decrease(amount);
+        } finally {
+            em.close();
+        }
     }
     
     @Override
-    public Amount getAmountOfGoods(Goods material) {
-        // TODO Auto-generated method stub
-        return null;
+    public Amount getAmountOfGoods(Goods goods) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Goods.class, goods.getId()).getWareHouseImpl().getAmount();
+        } finally {
+            em.close();
+        }
     }
     
     @Override
     public boolean canExport(Goods goods, Amount amount) {
-        // TODO Auto-generated method stub
-        return false;
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.find(Goods.class, goods.getId()).getWareHouseImpl().getAmount().compareTo(amount) >= 0 ? true : false;
+        } finally {
+            em.close();
+        }
     }
     
 }

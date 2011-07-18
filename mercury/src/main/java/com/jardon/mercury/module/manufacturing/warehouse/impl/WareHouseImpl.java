@@ -14,6 +14,13 @@ import com.jardon.mercury.core.Goods;
 import com.jardon.mercury.core.unit.Amount;
 import com.jardon.mercury.module.manufacturing.warehouse.WareHouse;
 
+/**
+ * warehouse implementation
+ * 
+ * @since 1.0.0
+ * @author Don Li
+ * 
+ */
 @Entity
 @Table(name = "wh_warehouse")
 public class WareHouseImpl implements WareHouse {

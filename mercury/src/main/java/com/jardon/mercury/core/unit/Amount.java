@@ -9,7 +9,7 @@ import javax.persistence.Embedded;
 import com.jardon.mercury.MercuryUnimplementedException;
 
 @Embeddable
-public final class Amount {
+public final class Amount implements Comparable<Amount> {
     private double quantity;
     private Unit unit;
     
@@ -56,5 +56,18 @@ public final class Amount {
             throw new MercuryUnimplementedException("different unit is not comparable yet");
         }
         this.quantity -= amount.getQuantity();
+    }
+    
+    @Override
+    public int compareTo(Amount o) {
+        if (this.unit != o.unit) {
+            throw new MercuryUnimplementedException("can't compare different units");
+        }
+        if (quantity > o.quantity) {
+            return 1;
+        } else if (quantity > o.quantity) {
+            return -1;
+        }
+        return 0;
     }
 }

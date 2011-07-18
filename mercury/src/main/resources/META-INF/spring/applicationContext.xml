@@ -30,4 +30,6 @@
     	<property name="persistenceUnitName" value="hibernatePersistanceUnit"/>
     </bean>
     
+    <context:component-scan base-package="com.jardon.mercury.module.manufacturing.warehouse"/>
+    
 </beans>
