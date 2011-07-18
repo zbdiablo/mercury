@@ -1,14 +1,23 @@
 package com.jardon.mercury.core;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
-@MappedSuperclass
+import com.jardon.mercury.module.manufacturing.warehouse.impl.WareHouseImpl;
+
+@Entity
+@Table(name = "manu_goods")
+@Inheritance(strategy = InheritanceType.JOINED)
 abstract public class Goods {
     private long id;
     private String name;
+    private WareHouseImpl wareHouseImpl;
     
     public Goods() {
     }
@@ -34,5 +43,14 @@ abstract public class Goods {
     
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public void setWareHouseImpl(WareHouseImpl wareHouseImpl) {
+        this.wareHouseImpl = wareHouseImpl;
+    }
+    
+    @OneToOne(mappedBy = "goods")
+    public WareHouseImpl getWareHouseImpl() {
+        return wareHouseImpl;
     }
 }

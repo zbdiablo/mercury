@@ -1,7 +1,12 @@
 package com.jardon.mercury.core.unit;
 
+import javax.persistence.Embeddable;
+
+@Embeddable
 public interface Unit {
     public String getDisplayName();
+    
+    public void setDisplayName(String displayName);
     
     /**
      * Whether the unit is equal to me

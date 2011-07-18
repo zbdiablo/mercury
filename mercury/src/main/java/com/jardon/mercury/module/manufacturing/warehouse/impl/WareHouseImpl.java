@@ -1,9 +1,12 @@
 package com.jardon.mercury.module.manufacturing.warehouse.impl;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.jardon.mercury.MercuryUnimplementedException;
@@ -32,6 +35,9 @@ public class WareHouseImpl implements WareHouse {
         this.id = id;
     }
     
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "goods_id")
+    // @PrimaryKeyJoinColumn
     public Goods getGoods() {
         return goods;
     }

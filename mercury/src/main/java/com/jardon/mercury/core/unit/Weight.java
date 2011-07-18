@@ -15,14 +15,20 @@ public enum Weight implements Unit {
     }
     
     @Override
+    public void setDisplayName(String displayName) {
+        this.value = displayName;
+    }
+    
+    @Override
     public boolean equalTo(Unit unit) {
         if (!(unit instanceof Weight)) {
             return false;
         }
         Weight weight = (Weight) unit;
-        if(weight == this){
+        if (weight == this) {
             return true;
         }
         return false;
     }
+    
 }

@@ -1,5 +1,7 @@
 package com.jardon.mercury.core.unit;
 
+import com.jardon.mercury.MercuryUnimplementedException;
+
 public enum Length implements Unit {
     UNDEFINED, METER;
     
@@ -14,6 +16,11 @@ public enum Length implements Unit {
             return false;
         }
         return false;
+    }
+    
+    @Override
+    public void setDisplayName(String displayName) {
+        throw new MercuryUnimplementedException("class Lengh is not implemented");
     }
     
 }
