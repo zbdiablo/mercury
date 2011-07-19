@@ -2,6 +2,7 @@ package com.jardon.mercury;
 
 /**
  * Mercury root exception class.
+ * 
  * @since 1.0.0
  * @author Don Li
  * 
