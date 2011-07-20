@@ -8,7 +8,7 @@ import com.jardon.mercury.core.order.Order.OrderType;
 import com.jardon.mercury.core.order.OrderInfo;
 
 /**
- * interface for the bussiness order management(BOM) manager
+ * interface for the bill of material(BOM) manager
  * 
  * @since 1.0.0
  * @author Don Li
